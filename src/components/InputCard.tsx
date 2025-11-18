@@ -1,0 +1,115 @@
+import { BarChart3 } from 'lucide-react';
+
+interface InputCardProps {
+  sellOutHl: string;
+  setSellOutHl: (value: string) => void;
+  sellInHl: string;
+  setSellInHl: (value: string) => void;
+  desiredLos: string;
+  setDesiredLos: (value: string) => void;
+  pendingOrders: string;
+  setPendingOrders: (value: string) => void;
+  receivedStock: string;
+  setReceivedStock: (value: string) => void;
+}
+
+export function InputCard({
+  sellOutHl,
+  setSellOutHl,
+  sellInHl,
+  setSellInHl,
+  desiredLos,
+  setDesiredLos,
+  pendingOrders,
+  setPendingOrders,
+  receivedStock,
+  setReceivedStock,
+}: InputCardProps) {
+  return (
+    <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-slate-200 animate-slideUp">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="p-2 bg-blue-100 rounded-lg">
+          <BarChart3 size={24} className="text-blue-600" />
+        </div>
+        <h2 className="text-2xl font-bold text-slate-900">LOS Inputs</h2>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label className="block text-sm font-semibold text-slate-700 mb-2">
+            Sell Out (hl)
+          </label>
+          <input
+            type="number"
+            value={sellOutHl}
+            onChange={(e) => setSellOutHl(e.target.value)}
+            placeholder="e.g., 822"
+            step="0.01"
+            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-slate-900 placeholder-slate-400"
+          />
+          <p className="text-xs text-slate-500 mt-1">Volume sold to end customers</p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold text-slate-700 mb-2">
+            Sell In (hl)
+          </label>
+          <input
+            type="number"
+            value={sellInHl}
+            onChange={(e) => setSellInHl(e.target.value)}
+            placeholder="e.g., 1005"
+            step="0.01"
+            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-slate-900 placeholder-slate-400"
+          />
+          <p className="text-xs text-slate-500 mt-1">Volume sold to retailers</p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold text-slate-700 mb-2">
+            Desired LOS (%)
+          </label>
+          <input
+            type="number"
+            value={desiredLos}
+            onChange={(e) => setDesiredLos(e.target.value)}
+            placeholder="e.g., 93"
+            step="0.1"
+            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-slate-900 placeholder-slate-400"
+          />
+          <p className="text-xs text-slate-500 mt-1">Target LOS range: 93–105%</p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold text-slate-700 mb-2">
+            Pending Orders (cases, optional)
+          </label>
+          <input
+            type="number"
+            value={pendingOrders}
+            onChange={(e) => setPendingOrders(e.target.value)}
+            placeholder="e.g., 1500"
+            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-slate-900 placeholder-slate-400"
+          />
+          <p className="text-xs text-slate-500 mt-1">Unclosed orders to include</p>
+        </div>
+      </div>
+
+      <div className="pt-4 border-t border-slate-200">
+        <div>
+          <label className="block text-sm font-semibold text-slate-700 mb-2">
+            Received Stock (cases, optional)
+          </label>
+          <input
+            type="number"
+            value={receivedStock}
+            onChange={(e) => setReceivedStock(e.target.value)}
+            placeholder="e.g., 2000"
+            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-slate-900 placeholder-slate-400"
+          />
+          <p className="text-xs text-slate-500 mt-1">New stock to update Sell In</p>
+        </div>
+      </div>
+    </div>
+  );
+}
