@@ -21,14 +21,14 @@ export function SmartSuggestions({ status, currentLos, desiredLos }: SmartSugges
       case 'caution':
         return <AlertTriangle size={24} className="text-orange-600" />;
       case 'high':
-        return <Info size={24} className="text-blue-600" />;
+        return <Info size={24} className="text-cyan-600" />;
       default:
         return <Info size={24} className="text-slate-600" />;
     }
   };
 
   return (
-    <div className={`rounded-xl shadow-lg p-6 sm:p-8 border-2 ${bgColor} animate-slideUp`}>
+    <div className={`rounded-xl shadow-xl p-6 sm:p-8 border-2 ${bgColor} animate-slideUp backdrop-blur-sm`}>
       <div className="flex gap-4">
         <div className="flex-shrink-0 pt-1">
           {getIcon()}

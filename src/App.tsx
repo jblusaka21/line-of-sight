@@ -27,6 +27,7 @@ export default function App() {
   }, [sellOutHl, sellInHl, desiredLos, pendingOrders, receivedStock]);
 
   const hasValidInputs = sellOutHl && sellInHl && desiredLos;
+  const showCurrentLos = sellOutHl && sellInHl;
 
   const handleAddCases = (cases: number) => {
     const current = parseFloat(pendingOrders) || 0;
@@ -34,7 +35,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-cyan-50 to-teal-50">
       <Header />
 
       <main className="max-w-6xl mx-auto px-4 py-8 sm:py-12">
@@ -54,13 +55,16 @@ export default function App() {
               setReceivedStock={setReceivedStock}
             />
 
+            {showCurrentLos && (
+              <LOSProgressBar
+                currentLos={result.currentLos}
+                desiredLos={parseFloat(desiredLos) || 0}
+                status={result.losStatus}
+              />
+            )}
+
             {hasValidInputs && (
               <>
-                <LOSProgressBar
-                  currentLos={result.currentLos}
-                  desiredLos={result.desiredLos}
-                  status={result.losStatus}
-                />
 
                 <ResultsPanel result={result} />
 
@@ -76,9 +80,11 @@ export default function App() {
             )}
 
             {!hasValidInputs && (
-              <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-dashed border-slate-300 text-center animate-slideUp">
-                <p className="text-slate-500 text-lg font-medium">
-                  Enter Sell Out, Sell In, and Desired LOS to see predictions
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-8 border-2 border-dashed border-cyan-200 text-center animate-slideUp">
+                <p className="text-slate-600 text-lg font-medium">
+                  {showCurrentLos
+                    ? 'Add Desired LOS to see full predictions and scenarios'
+                    : 'Enter Sell Out and Sell In to get started'}
                 </p>
               </div>
             )}
@@ -93,24 +99,24 @@ export default function App() {
                 desiredLos={result.desiredLos}
               />
 
-              <div className="bg-slate-900 text-slate-100 rounded-xl shadow-lg p-6 space-y-4 animate-slideUp">
-                <h3 className="text-lg font-bold">Key Metrics</h3>
+              <div className="bg-gradient-to-br from-slate-800 to-slate-900 text-slate-100 rounded-xl shadow-xl p-6 space-y-4 animate-slideUp border border-slate-700">
+                <h3 className="text-lg font-bold text-cyan-300">Key Metrics</h3>
                 <div className="space-y-3">
-                  <div>
+                  <div className="bg-slate-700/30 rounded-lg p-3">
                     <p className="text-sm text-slate-400">Current LOS</p>
-                    <p className="text-2xl font-bold text-blue-400">
+                    <p className="text-2xl font-bold text-cyan-400">
                       {result.currentLos.toFixed(2)}%
                     </p>
                   </div>
-                  <div className="pt-3 border-t border-slate-700">
+                  <div className="bg-slate-700/30 rounded-lg p-3">
                     <p className="text-sm text-slate-400">Predicted LOS</p>
-                    <p className="text-2xl font-bold text-green-400">
+                    <p className="text-2xl font-bold text-teal-400">
                       {result.predictedLos.toFixed(2)}%
                     </p>
                   </div>
-                  <div className="pt-3 border-t border-slate-700">
+                  <div className="bg-slate-700/30 rounded-lg p-3">
                     <p className="text-sm text-slate-400">Cases to Target</p>
-                    <p className="text-2xl font-bold text-orange-400">
+                    <p className="text-2xl font-bold text-amber-400">
                       {result.casesNeeded.toFixed(0)}
                     </p>
                   </div>

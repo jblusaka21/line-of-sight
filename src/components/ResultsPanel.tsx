@@ -42,10 +42,10 @@ export function ResultsPanel({ result }: ResultsPanelProps) {
   ];
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-slate-200 animate-slideUp">
+    <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 sm:p-8 border border-teal-100 animate-slideUp">
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-2 bg-green-100 rounded-lg">
-          <TrendingUp size={24} className="text-green-600" />
+        <div className="p-2 bg-gradient-to-br from-teal-100 to-cyan-100 rounded-lg">
+          <TrendingUp size={24} className="text-teal-600" />
         </div>
         <h2 className="text-2xl font-bold text-slate-900">Predictions</h2>
       </div>
@@ -54,14 +54,14 @@ export function ResultsPanel({ result }: ResultsPanelProps) {
         {stats.map((stat, idx) => (
           <div
             key={idx}
-            className={`p-4 rounded-lg border-2 transition-all ${
+            className={`p-4 rounded-lg border-2 transition-all hover:shadow-md ${
               stat.highlight
-                ? 'bg-blue-50 border-blue-300 shadow-md'
-                : 'bg-slate-50 border-slate-200'
+                ? 'bg-gradient-to-br from-cyan-50 to-teal-50 border-cyan-300 shadow-md'
+                : 'bg-slate-50 border-slate-200 hover:border-slate-300'
             }`}
           >
             <p className="text-sm text-slate-600 font-medium mb-1">{stat.label}</p>
-            <p className={`text-2xl font-bold ${stat.highlight ? 'text-blue-700' : 'text-slate-900'}`}>
+            <p className={`text-2xl font-bold ${stat.highlight ? 'text-cyan-700' : 'text-slate-900'}`}>
               {stat.value}
             </p>
             <p className="text-xs text-slate-500 mt-1">{stat.unit}</p>

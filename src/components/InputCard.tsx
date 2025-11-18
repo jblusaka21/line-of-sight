@@ -25,13 +25,25 @@ export function InputCard({
   receivedStock,
   setReceivedStock,
 }: InputCardProps) {
+  const currentLos = sellOutHl && sellInHl
+    ? ((parseFloat(sellOutHl) / parseFloat(sellInHl)) * 100).toFixed(2)
+    : null;
+
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-slate-200 animate-slideUp">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="p-2 bg-blue-100 rounded-lg">
-          <BarChart3 size={24} className="text-blue-600" />
+    <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 sm:p-8 border border-cyan-100 animate-slideUp">
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-gradient-to-br from-cyan-100 to-teal-100 rounded-lg">
+            <BarChart3 size={24} className="text-cyan-600" />
+          </div>
+          <h2 className="text-2xl font-bold text-slate-900">LOS Inputs</h2>
         </div>
-        <h2 className="text-2xl font-bold text-slate-900">LOS Inputs</h2>
+        {currentLos && (
+          <div className="text-right animate-countUp">
+            <div className="text-xs text-slate-500 uppercase tracking-wide font-semibold">Current LOS</div>
+            <div className="text-2xl font-bold text-cyan-600">{currentLos}%</div>
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
@@ -45,7 +57,7 @@ export function InputCard({
             onChange={(e) => setSellOutHl(e.target.value)}
             placeholder="e.g., 822"
             step="0.01"
-            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-slate-900 placeholder-slate-400"
+            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all text-slate-900 placeholder-slate-400"
           />
           <p className="text-xs text-slate-500 mt-1">Volume sold to end customers</p>
         </div>
@@ -60,7 +72,7 @@ export function InputCard({
             onChange={(e) => setSellInHl(e.target.value)}
             placeholder="e.g., 1005"
             step="0.01"
-            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-slate-900 placeholder-slate-400"
+            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all text-slate-900 placeholder-slate-400"
           />
           <p className="text-xs text-slate-500 mt-1">Volume sold to retailers</p>
         </div>
@@ -75,7 +87,7 @@ export function InputCard({
             onChange={(e) => setDesiredLos(e.target.value)}
             placeholder="e.g., 93"
             step="0.1"
-            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-slate-900 placeholder-slate-400"
+            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all text-slate-900 placeholder-slate-400"
           />
           <p className="text-xs text-slate-500 mt-1">Target LOS range: 93–105%</p>
         </div>
@@ -89,7 +101,7 @@ export function InputCard({
             value={pendingOrders}
             onChange={(e) => setPendingOrders(e.target.value)}
             placeholder="e.g., 1500"
-            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-slate-900 placeholder-slate-400"
+            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all text-slate-900 placeholder-slate-400"
           />
           <p className="text-xs text-slate-500 mt-1">Unclosed orders to include</p>
         </div>
@@ -105,7 +117,7 @@ export function InputCard({
             value={receivedStock}
             onChange={(e) => setReceivedStock(e.target.value)}
             placeholder="e.g., 2000"
-            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-slate-900 placeholder-slate-400"
+            className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all text-slate-900 placeholder-slate-400"
           />
           <p className="text-xs text-slate-500 mt-1">New stock to update Sell In</p>
         </div>

@@ -27,7 +27,7 @@ export interface LOSResult {
 export function calculateLOS(data: LOSData): LOSResult {
   const { sellOutHl, sellInHl, desiredLos, pendingOrders, receivedStock } = data;
 
-  if (!sellOutHl || !sellInHl || !desiredLos) {
+  if (!sellOutHl || !sellInHl) {
     return getEmptyResult();
   }
 
@@ -35,8 +35,8 @@ export function calculateLOS(data: LOSData): LOSResult {
   const sellInCases = sellInHl / HECTOLITER_TO_CASE;
   const currentLos = (sellOutHl / sellInHl) * 100;
 
-  const casesNeeded = (desiredLos * sellInCases) / 100 - sellOutCases;
-  const newSellOutHl = (casesNeeded * HECTOLITER_TO_CASE) + sellOutHl;
+  const casesNeeded = desiredLos > 0 ? (desiredLos * sellInCases) / 100 - sellOutCases : 0;
+  const newSellOutHl = desiredLos > 0 ? (casesNeeded * HECTOLITER_TO_CASE) + sellOutHl : sellOutHl;
   const newSellOutCases = newSellOutHl / HECTOLITER_TO_CASE;
   const losAfterSelling = (newSellOutHl / sellInHl) * 100;
 
@@ -116,7 +116,7 @@ export function getStatusColor(status: string): string {
     case 'caution':
       return 'from-orange-600 to-orange-700';
     case 'high':
-      return 'from-blue-600 to-blue-700';
+      return 'from-cyan-600 to-teal-600';
     default:
       return 'from-slate-600 to-slate-700';
   }
@@ -131,7 +131,7 @@ export function getStatusBgColor(status: string): string {
     case 'caution':
       return 'bg-orange-50 border-orange-200';
     case 'high':
-      return 'bg-blue-50 border-blue-200';
+      return 'bg-cyan-50 border-cyan-200';
     default:
       return 'bg-slate-50 border-slate-200';
   }
@@ -146,7 +146,7 @@ export function getStatusTextColor(status: string): string {
     case 'caution':
       return 'text-orange-700';
     case 'high':
-      return 'text-blue-700';
+      return 'text-cyan-700';
     default:
       return 'text-slate-700';
   }
