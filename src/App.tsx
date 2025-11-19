@@ -1,9 +1,11 @@
 import { useState, useMemo } from 'react';
 import { Header } from './components/Header';
 import { InputCard } from './components/InputCard';
+import { InfoCard } from './components/InfoCard';
 import { LOSProgressBar } from './components/LOSProgressBar';
 import { SmartSuggestions } from './components/SmartSuggestions';
 import { ResultsPanel } from './components/ResultsPanel';
+import { ComparisonView } from './components/ComparisonView';
 import { ScenarioButtons } from './components/ScenarioButtons';
 import { ExportButtons } from './components/ExportButtons';
 import { Footer } from './components/Footer';
@@ -39,7 +41,9 @@ export default function App() {
       <Header />
 
       <main className="max-w-6xl mx-auto px-4 py-8 sm:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+        {!hasValidInputs && !showCurrentLos && <InfoCard />}
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mt-8">
           {/* Left Column - Inputs */}
           <div className="lg:col-span-2 space-y-6 sm:space-y-8">
             <InputCard
@@ -67,6 +71,8 @@ export default function App() {
               <>
 
                 <ResultsPanel result={result} />
+
+                <ComparisonView result={result} desiredLos={parseFloat(desiredLos) || 0} />
 
                 <ScenarioButtons onAddCases={handleAddCases} />
 

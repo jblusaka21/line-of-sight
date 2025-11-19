@@ -33,7 +33,7 @@ export function SmartSuggestions({ status, currentLos, desiredLos }: SmartSugges
         <div className="flex-shrink-0 pt-1">
           {getIcon()}
         </div>
-        <div>
+        <div className="flex-1">
           <h3 className={`text-lg font-bold ${textColor} mb-2`}>
             {status === 'critical'
               ? 'Action Required'
@@ -43,7 +43,21 @@ export function SmartSuggestions({ status, currentLos, desiredLos }: SmartSugges
               ? 'Monitor Performance'
               : 'Attention Needed'}
           </h3>
-          <p className={`text-sm ${textColor} opacity-90`}>{suggestion}</p>
+          <p className={`text-sm ${textColor} opacity-90 leading-relaxed`}>{suggestion}</p>
+          <div className="mt-3 pt-3 border-t border-current border-opacity-20">
+            <p className={`text-xs font-semibold uppercase tracking-wide ${textColor} opacity-75`}>
+              Recommended Action
+            </p>
+            <p className={`text-xs ${textColor} opacity-85 mt-1`}>
+              {status === 'critical'
+                ? 'Increase sales efforts or review distribution strategy'
+                : status === 'optimal'
+                ? 'Continue monitoring trends and maintain consistency'
+                : status === 'caution'
+                ? 'Adjust delivery schedules and coordinate with suppliers'
+                : 'Consider strategic inventory optimization'}
+            </p>
+          </div>
         </div>
       </div>
     </div>

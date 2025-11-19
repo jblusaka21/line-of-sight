@@ -47,26 +47,29 @@ export function ExportButtons({
 
   return (
     <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 sm:p-8 border border-cyan-100 animate-slideUp">
-      <h3 className="text-lg font-bold text-slate-900 mb-4">Export Report</h3>
+      <h3 className="text-lg font-bold text-slate-900 mb-1">Export Report</h3>
+      <p className="text-xs text-slate-600 mb-4">Save your analysis in your preferred format:</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         <button
           onClick={handleExportPDF}
-          className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-br from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-semibold rounded-lg transition-all duration-200 hover:shadow-xl active:scale-95 transform hover:-translate-y-0.5"
+          className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-br from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-semibold rounded-lg transition-all duration-200 hover:shadow-xl active:scale-95 transform hover:-translate-y-0.5 group"
         >
-          <FileText size={18} />
+          <FileText size={18} className="group-hover:rotate-6 transition-transform" />
           <span className="text-sm sm:text-base">Export PDF</span>
         </button>
         <button
           onClick={handleExportCSV}
-          className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-br from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold rounded-lg transition-all duration-200 hover:shadow-xl active:scale-95 transform hover:-translate-y-0.5"
+          className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-br from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold rounded-lg transition-all duration-200 hover:shadow-xl active:scale-95 transform hover:-translate-y-0.5 group"
         >
-          <Download size={18} />
+          <Download size={18} className="group-hover:scale-110 transition-transform" />
           <span className="text-sm sm:text-base">Export CSV</span>
         </button>
       </div>
-      <p className="text-xs text-slate-500 mt-4">
-        Download your LOS report and predictions for offline use or sharing
-      </p>
+      <div className="mt-4 p-3 bg-slate-50 rounded-lg border border-slate-200">
+        <p className="text-xs text-slate-600">
+          <span className="font-semibold">PDF</span> for sharing and printing • <span className="font-semibold">CSV</span> for spreadsheet analysis
+        </p>
+      </div>
     </div>
   );
 }
