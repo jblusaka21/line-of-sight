@@ -8,17 +8,17 @@ interface ResultsPanelProps {
 export function ResultsPanel({ result }: ResultsPanelProps) {
   const currentStats = [
     {
-      label: 'Sell Out (Cases)',
+      label: 'Current Demand',
       value: result.sellOutCases.toFixed(2),
       unit: 'cases',
     },
     {
-      label: 'Sell In (Cases)',
+      label: 'Available Supply',
       value: result.sellInCases.toFixed(2),
       unit: 'cases',
     },
     {
-      label: 'Current LOS',
+      label: 'Coverage Ratio',
       value: result.currentLos.toFixed(2),
       unit: '%',
       highlight: true,
@@ -27,18 +27,18 @@ export function ResultsPanel({ result }: ResultsPanelProps) {
 
   const sellingStats = [
     {
-      label: 'Cases Needed',
+      label: 'Cases to Target',
       value: result.casesNeeded.toFixed(0),
       unit: 'cases',
       highlight: true,
     },
     {
-      label: 'New Sell Out (hl)',
+      label: 'Projected Demand',
       value: result.newSellOutHl.toFixed(2),
       unit: 'hl',
     },
     {
-      label: 'LOS After Selling',
+      label: 'Projected Coverage',
       value: result.losAfterSelling.toFixed(2),
       unit: '%',
       highlight: true,
@@ -47,17 +47,17 @@ export function ResultsPanel({ result }: ResultsPanelProps) {
 
   const receivingStats = [
     {
-      label: 'New Sell In (hl)',
+      label: 'Updated Supply',
       value: result.newSellInHl.toFixed(2),
       unit: 'hl',
     },
     {
-      label: 'New Sell In (Cases)',
+      label: 'Updated Capacity',
       value: result.newSellInCases.toFixed(0),
       unit: 'cases',
     },
     {
-      label: 'LOS After Receiving',
+      label: 'New Coverage',
       value: result.losAfterReceiving.toFixed(2),
       unit: '%',
       highlight: true,
@@ -86,11 +86,11 @@ export function ResultsPanel({ result }: ResultsPanelProps) {
         <div className="p-2 bg-gradient-to-br from-teal-100 to-cyan-100 rounded-lg">
           <TrendingUp size={24} className="text-teal-600" />
         </div>
-        <h2 className="text-2xl font-bold text-slate-900">Detailed Analysis</h2>
+        <h2 className="text-2xl font-bold text-slate-900">Performance Analysis</h2>
       </div>
 
       <div>
-        <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-3">Current Status</h3>
+        <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-3">Today's Metrics</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {currentStats.map((stat, idx) => (
             <StatCard key={idx} stat={stat} />
@@ -99,7 +99,7 @@ export function ResultsPanel({ result }: ResultsPanelProps) {
       </div>
 
       <div className="border-t border-slate-200 pt-6">
-        <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-3">If You Sell Cases Now</h3>
+        <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-3">Selling Scenario</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {sellingStats.map((stat, idx) => (
             <StatCard key={idx} stat={stat} />
@@ -108,7 +108,7 @@ export function ResultsPanel({ result }: ResultsPanelProps) {
       </div>
 
       <div className="border-t border-slate-200 pt-6">
-        <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-3">If You Receive New Stock</h3>
+        <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-3">Receiving Scenario</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {receivingStats.map((stat, idx) => (
             <StatCard key={idx} stat={stat} />

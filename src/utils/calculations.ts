@@ -93,18 +93,18 @@ function getEmptyResult(): LOSResult {
 
 export function getSuggestion(status: string, currentLos: number, desiredLos: number): string {
   if (status === 'critical') {
-    return 'LOS is below target. Increase sales or reduce incoming stock to reach your desired LOS.';
+    return `Coverage is critically low at ${currentLos.toFixed(1)}%. You need to accelerate sales velocity or reduce incoming inventory to approach your ${desiredLos.toFixed(0)}% target.`;
   }
   if (status === 'optimal') {
-    return 'Healthy LOS! You are within the target range. Maintain your current sales rate.';
+    return `Excellent performance at ${currentLos.toFixed(1)}%! You're within the optimal range. Continue monitoring demand patterns and maintain current supply chain execution.`;
   }
   if (status === 'caution') {
-    return 'LOS is slightly high. Monitor stock closely and consider adjusting delivery schedules.';
+    return `Coverage is elevated at ${currentLos.toFixed(1)}%. Monitor demand closely and consider coordinating with suppliers to adjust future shipment timing.`;
   }
   if (status === 'high') {
-    return 'LOS is above target. Consider reducing stock or delaying deliveries to normalize levels.';
+    return `Coverage is significantly high at ${currentLos.toFixed(1)}%. Coordinate with suppliers to optimize future orders, or accelerate sales initiatives to rebalance inventory.`;
   }
-  return 'Monitor your LOS performance.';
+  return 'Analyze your coverage performance and adjust supply accordingly.';
 }
 
 export function getStatusColor(status: string): string {

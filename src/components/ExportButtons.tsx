@@ -47,8 +47,8 @@ export function ExportButtons({
 
   return (
     <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 sm:p-8 border border-cyan-100 animate-slideUp">
-      <h3 className="text-lg font-bold text-slate-900 mb-1">Export Report</h3>
-      <p className="text-xs text-slate-600 mb-4">Save your analysis in your preferred format:</p>
+      <h3 className="text-lg font-bold text-slate-900 mb-1">Save & Share Results</h3>
+      <p className="text-xs text-slate-600 mb-4">Download your LOS analysis for presentations or deeper analysis:</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         <button
           onClick={handleExportPDF}

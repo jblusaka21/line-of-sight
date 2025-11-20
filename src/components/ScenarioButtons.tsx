@@ -15,9 +15,9 @@ export function ScenarioButtons({ onAddCases }: ScenarioButtonsProps) {
     <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 sm:p-8 border border-cyan-100 animate-slideUp">
       <div className="flex items-center gap-2 mb-4">
         <Zap size={20} className="text-amber-500" />
-        <h3 className="text-lg font-bold text-slate-900">Quick Scenarios</h3>
+        <h3 className="text-lg font-bold text-slate-900">Test Order Scenarios</h3>
       </div>
-      <p className="text-xs text-slate-600 mb-4">Add pending orders to forecast impact:</p>
+      <p className="text-xs text-slate-600 mb-4">Simulate order volumes and see real-time coverage impact:</p>
       <div className="grid grid-cols-3 gap-3 sm:gap-4">
         {scenarios.map(({ cases, label }) => (
           <button
@@ -33,7 +33,7 @@ export function ScenarioButtons({ onAddCases }: ScenarioButtonsProps) {
       </div>
       <div className="mt-4 p-3 bg-cyan-50 rounded-lg border border-cyan-200">
         <p className="text-xs text-slate-700">
-          <span className="font-semibold">Tip:</span> These scenarios add to your Pending Orders. See how each impacts your projected LOS.
+          <span className="font-semibold">How it works:</span> Each button adds to Pending Orders, updating your projected coverage instantly. Use to test demand scenarios.
         </p>
       </div>
     </div>

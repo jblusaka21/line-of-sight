@@ -36,11 +36,11 @@ export function InputCard({
           <div className="p-2 bg-gradient-to-br from-cyan-100 to-teal-100 rounded-lg">
             <BarChart3 size={24} className="text-cyan-600" />
           </div>
-          <h2 className="text-2xl font-bold text-slate-900">LOS Inputs</h2>
+          <h2 className="text-2xl font-bold text-slate-900">Performance Metrics</h2>
         </div>
         {currentLos && (
           <div className="text-right animate-countUp">
-            <div className="text-xs text-slate-500 uppercase tracking-wide font-semibold">Current LOS</div>
+            <div className="text-xs text-slate-500 uppercase tracking-wide font-semibold">Real-time LOS</div>
             <div className="text-2xl font-bold text-cyan-600">{currentLos}%</div>
           </div>
         )}
@@ -49,7 +49,7 @@ export function InputCard({
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">
-            Sell Out (hl)
+            Demand (Sell Out) — hl
           </label>
           <input
             type="number"
@@ -59,12 +59,12 @@ export function InputCard({
             step="0.01"
             className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all text-slate-900 placeholder-slate-400"
           />
-          <p className="text-xs text-slate-500 mt-1">Volume sold to end customers</p>
+          <p className="text-xs text-slate-500 mt-1">Total volume sold directly to consumers/end users</p>
         </div>
 
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">
-            Sell In (hl)
+            Supply (Sell In) — hl
           </label>
           <input
             type="number"
@@ -74,12 +74,12 @@ export function InputCard({
             step="0.01"
             className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all text-slate-900 placeholder-slate-400"
           />
-          <p className="text-xs text-slate-500 mt-1">Volume sold to retailers</p>
+          <p className="text-xs text-slate-500 mt-1">Total inventory available in distribution channel</p>
         </div>
 
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">
-            Desired LOS (%)
+            Target LOS — %
           </label>
           <input
             type="number"
@@ -89,12 +89,12 @@ export function InputCard({
             step="0.1"
             className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all text-slate-900 placeholder-slate-400"
           />
-          <p className="text-xs text-slate-500 mt-1">Target LOS range: 93–105%</p>
+          <p className="text-xs text-slate-500 mt-1">Target coverage (Recommended: 93–105%)</p>
         </div>
 
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">
-            Pending Orders (cases, optional)
+            Pending Orders — cases (optional)
           </label>
           <input
             type="number"
@@ -103,14 +103,14 @@ export function InputCard({
             placeholder="e.g., 1500"
             className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all text-slate-900 placeholder-slate-400"
           />
-          <p className="text-xs text-slate-500 mt-1">Unclosed orders to include</p>
+          <p className="text-xs text-slate-500 mt-1">Outstanding orders that will impact LOS</p>
         </div>
       </div>
 
       <div className="pt-4 border-t border-slate-200">
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">
-            Received Stock (cases, optional)
+            Incoming Stock — cases (optional)
           </label>
           <input
             type="number"
@@ -119,7 +119,7 @@ export function InputCard({
             placeholder="e.g., 2000"
             className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 focus:outline-none transition-all text-slate-900 placeholder-slate-400"
           />
-          <p className="text-xs text-slate-500 mt-1">New stock to update Sell In</p>
+          <p className="text-xs text-slate-500 mt-1">Expected shipments to increase available inventory</p>
         </div>
       </div>
     </div>

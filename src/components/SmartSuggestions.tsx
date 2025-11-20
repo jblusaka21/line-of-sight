@@ -36,12 +36,12 @@ export function SmartSuggestions({ status, currentLos, desiredLos }: SmartSugges
         <div className="flex-1">
           <h3 className={`text-lg font-bold ${textColor} mb-2`}>
             {status === 'critical'
-              ? 'Action Required'
+              ? 'Urgent Action Needed'
               : status === 'optimal'
-              ? 'Healthy LOS'
+              ? 'Optimal Performance'
               : status === 'caution'
-              ? 'Monitor Performance'
-              : 'Attention Needed'}
+              ? 'Close Monitoring Required'
+              : 'Optimization Opportunity'}
           </h3>
           <p className={`text-sm ${textColor} opacity-90 leading-relaxed`}>{suggestion}</p>
           <div className="mt-3 pt-3 border-t border-current border-opacity-20">
@@ -50,12 +50,12 @@ export function SmartSuggestions({ status, currentLos, desiredLos }: SmartSugges
             </p>
             <p className={`text-xs ${textColor} opacity-85 mt-1`}>
               {status === 'critical'
-                ? 'Increase sales efforts or review distribution strategy'
+                ? 'Push sales initiatives or adjust supply chain timing immediately'
                 : status === 'optimal'
-                ? 'Continue monitoring trends and maintain consistency'
+                ? 'Maintain current execution and track demand weekly'
                 : status === 'caution'
-                ? 'Adjust delivery schedules and coordinate with suppliers'
-                : 'Consider strategic inventory optimization'}
+                ? 'Contact suppliers about delivery optimization and timing'
+                : 'Coordinate with sales and procurement on inventory reduction'}
             </p>
           </div>
         </div>

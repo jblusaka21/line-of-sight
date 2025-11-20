@@ -9,27 +9,27 @@ interface ComparisonViewProps {
 export function ComparisonView({ result, desiredLos }: ComparisonViewProps) {
   const scenarios = [
     {
-      name: 'Current',
+      name: 'Current State',
       los: result.currentLos,
-      description: 'Your actual LOS right now',
+      description: 'Your coverage level right now',
       icon: null,
     },
     {
-      name: 'If You Sell',
+      name: 'After Sales',
       los: result.losAfterSelling,
-      description: 'After selling forecasted cases',
+      description: 'Coverage if cases are sold at target',
       icon: TrendingDown,
     },
     {
-      name: 'If You Receive',
+      name: 'After Restocking',
       los: result.losAfterReceiving,
-      description: 'After receiving new stock',
+      description: 'Coverage with incoming inventory',
       icon: TrendingUp,
     },
     {
-      name: 'With Pending Orders',
+      name: 'With Orders',
       los: result.predictedLos,
-      description: 'Including pending order impact',
+      description: 'Coverage including pending orders',
       icon: null,
     },
   ];
@@ -43,7 +43,7 @@ export function ComparisonView({ result, desiredLos }: ComparisonViewProps) {
 
   return (
     <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 sm:p-8 border border-teal-100 animate-slideUp">
-      <h3 className="text-lg font-bold text-slate-900 mb-4">Scenario Comparison</h3>
+      <h3 className="text-lg font-bold text-slate-900 mb-4">Coverage Impact Analysis</h3>
 
       <div className="space-y-3">
         {scenarios.map((scenario, idx) => {
@@ -97,7 +97,7 @@ export function ComparisonView({ result, desiredLos }: ComparisonViewProps) {
 
       <div className="mt-4 p-3 bg-slate-50 rounded-lg border border-slate-200">
         <p className="text-xs text-slate-600">
-          <span className="font-semibold">Pro Tip:</span> Compare scenarios to find the best balance between sales volume and stock levels.
+          <span className="font-semibold">Insight:</span> Use scenarios to identify which actions bring coverage closest to your target range (93-103%).
         </p>
       </div>
     </div>

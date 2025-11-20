@@ -15,7 +15,7 @@ export function LOSProgressBar({ currentLos, desiredLos, status }: LOSProgressBa
     <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 sm:p-8 border border-cyan-100 animate-slideUp">
       <div className="mb-6">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-bold text-slate-900">LOS Progress</h3>
+          <h3 className="text-lg font-bold text-slate-900">Coverage Status</h3>
           <div className="text-right">
             <div className={`text-3xl font-bold ${textColor}`}>
               {currentLos.toFixed(2)}%
